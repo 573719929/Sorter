@@ -23,6 +23,7 @@ public class DictComparator implements Comparator<Map<String, Object>> {
 		this.SORTBY = r;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public int compare(Map<String, Object> o1, Map<String, Object> o2) {
 		// TODO Auto-generated method stub
@@ -39,13 +40,13 @@ public class DictComparator implements Comparator<Map<String, Object>> {
 		for (String k : o2.keySet())
 			fields.add(k);
 		ArrayList<String> fieldslist = new ArrayList<String>();
-		for (String k : fieldslist)
+		for (String k : fields)
 			fieldslist.add(k);
 		String[] fieldsarray = new String[fieldslist.size()];
 		for (int i = 0; i < fieldsarray.length; ++i)
 			fieldsarray[i] = fieldslist.get(i);
 		Arrays.sort(fieldsarray);
-		for (String i : fields)
+		for (String i : fieldsarray)
 			if ((c = compareItem(o1.get(i), o2.get(i))) != 0)
 				return c;
 		return 0;
